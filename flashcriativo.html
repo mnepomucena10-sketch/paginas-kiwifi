@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Flash Criativo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange:  #FF7B05;
+      --orange2: #FF9F05;
+      --dark1:   #381B04;
+      --bg:      #0C0C0C;
+      --bg2:     #111111;
+      --bg3:     #171717;
+      --bg4:     #1C1C1C;
+      --white:   #FFFFFF;
+      --muted:   rgba(255,255,255,0.55);
+      --border:  rgba(255,255,255,0.08);
+    }
+
+    html { scroll-behavior: smooth; width: 100%; overflow-x: hidden; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      line-height: 1.55;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img, video { display: block; max-width: 100%; }
+
+    .grad {
+      background: linear-gradient(180deg, var(--orange) 0%, var(--orange2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 40px; width: 100%; }
+    @media (max-width: 767px) { .wrap { padding: 0 20px; } }
+
+    /* ── BUTTON ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(180deg, var(--orange) 0%, var(--orange2) 100%);
+      color: var(--dark1);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      padding: 16px 36px;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 40px rgba(255,123,5,0.35);
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 48px rgba(255,123,5,0.55);
+    }
+
+    .btn svg { flex-shrink: 0; }
+
+    .btn-wide { width: 100%; justify-content: center; max-width: 480px; }
+
+    /* ── FLASH SVG ICON ── */
+    .flash-ico { width: 22px; height: 26px; }
+
+    /* ══════════════════════════════════════
+       HERO
+    ══════════════════════════════════════ */
+    .hero {
+      min-height: 100vh;
+      background-color: #000;
+      background-image: url('https://flashcriativo.com.br/wp-content/uploads/2025/12/design-builder-9-1-complet-scaled.png');
+      background-position: top center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      padding: 100px 0;
+    }
+
+    .hero-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      gap: 18px;
+      max-width: 680px;
+      margin-right: auto;
+    }
+
+    .hero-logo {
+      width: 200px;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: -1.44px;
+      color: var(--white);
+    }
+
+    .hero h2 {
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.6;
+      letter-spacing: -0.2px;
+      color: var(--muted);
+      max-width: 580px;
+    }
+
+    @media (max-width: 767px) {
+      .hero h1 { font-size: 32px; letter-spacing: -1px; line-height: 1.25; }
+      .hero h2 { font-size: 16px; }
+      .hero { padding: 80px 0; }
+    }
+
+    /* ══════════════════════════════════════
+       VSL
+    ══════════════════════════════════════ */
+    .vsl-sec {
+      background: var(--bg2);
+      padding: 100px 0;
+    }
+
+    .vsl-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      text-align: center;
+    }
+
+    .vsl-inner h2 {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -1.2px;
+      line-height: 1.4;
+      max-width: 700px;
+    }
+
+    .vsl-video-wrap {
+      width: 100%;
+      max-width: 860px;
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .vsl-thumb {
+      width: 100%;
+      display: block;
+      border-radius: 16px;
+    }
+
+    .vsl-play {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.3);
+      transition: background 0.2s;
+    }
+
+    .vsl-play:hover { background: rgba(0,0,0,0.5); }
+
+    .vsl-play-btn {
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(180deg, var(--orange), var(--orange2));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 40px rgba(255,123,5,0.5);
+      transition: transform 0.2s;
+    }
+
+    .vsl-play:hover .vsl-play-btn { transform: scale(1.08); }
+
+    .vsl-play-btn svg { margin-left: 4px; }
+
+    @media (max-width: 767px) {
+      .vsl-inner h2 { font-size: 28px; letter-spacing: -0.8px; }
+    }
+
+    /* ══════════════════════════════════════
+       DORES + EXEMPLOS
+    ══════════════════════════════════════ */
+    .dores-sec {
+      background: var(--bg);
+      padding: 100px 0;
+    }
+
+    .dores-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    /* col 1 — mascote */
+    .mascot-col {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .mascot-img {
+      width: 100%;
+      max-width: 340px;
+    }
+
+    /* col 2 — dores */
+    .dores-col { display: flex; flex-direction: column; gap: 28px; }
+
+    .dores-title {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.84px;
+      line-height: 1.4;
+    }
+
+    .dor-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(255,123,5,0.06);
+      border: 1px solid rgba(255,123,5,0.18);
+      border-radius: 12px;
+      padding: 16px 18px;
+    }
+
+    .dor-item .dor-icon { flex-shrink: 0; }
+
+    .dor-item p {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.5;
+      letter-spacing: -0.2px;
+    }
+
+    /* col 3 — exemplos */
+    .exemplos-col { display: flex; flex-direction: column; gap: 24px; }
+
+    .exemplos-header h3 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.84px;
+      margin-bottom: 6px;
+    }
+
+    .exemplos-header p { font-size: 15px; color: var(--muted); }
+
+    .videos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .video-item {
+      border-radius: 12px;
+      overflow: hidden;
+      background: #1a1a1a;
+    }
+
+    .video-item video {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    @media (max-width: 1024px) {
+      .dores-grid { grid-template-columns: 1fr 1fr; }
+      .mascot-col { display: none; }
+    }
+
+    @media (max-width: 767px) {
+      .dores-grid { grid-template-columns: 1fr; }
+      .video-item video { height: 160px; }
+    }
+
+    /* ══════════════════════════════════════
+       POR QUE VOCÊ PRECISA
+    ══════════════════════════════════════ */
+    .porq-sec {
+      background: var(--bg2);
+      padding: 100px 0;
+    }
+
+    .porq-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .porq-left h2 {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -1.2px;
+      line-height: 1.35;
+    }
+
+    .porq-right { display: flex; flex-direction: column; gap: 36px; }
+
+    .porq-item { display: flex; flex-direction: column; gap: 14px; }
+
+    .porq-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(255,123,5,0.1);
+      border: 1px solid rgba(255,123,5,0.25);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .porq-item h3 {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.4px;
+    }
+
+    .porq-item p { font-size: 16px; color: var(--muted); line-height: 1.65; }
+
+    @media (max-width: 767px) {
+      .porq-inner { grid-template-columns: 1fr; gap: 40px; }
+      .porq-left h2 { font-size: 28px; }
+    }
+
+    /* ══════════════════════════════════════
+       MÓDULOS
+    ══════════════════════════════════════ */
+    .mod-sec {
+      background: var(--bg);
+      padding: 100px 0;
+    }
+
+    .mod-sec-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .mod-sec-header h2 {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -1.2px;
+    }
+
+    .mod-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .mod-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .mod-card:hover {
+      border-color: rgba(255,123,5,0.3);
+      transform: translateY(-3px);
+    }
+
+    .mod-label {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+
+    .mod-card h3 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .mod-card p { font-size: 15px; color: var(--muted); line-height: 1.7; }
+
+    @media (max-width: 767px) {
+      .mod-grid { grid-template-columns: 1fr; }
+      .mod-sec-header h2 { font-size: 28px; }
+    }
+
+    /* ══════════════════════════════════════
+       BÔNUS
+    ══════════════════════════════════════ */
+    .bonus-sec {
+      background: var(--bg2);
+      padding: 100px 0;
+    }
+
+    .bonus-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      background: var(--bg3);
+      border: 1px solid rgba(255,123,5,0.25);
+      border-radius: 24px;
+      padding: 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bonus-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--orange), var(--orange2));
+    }
+
+    .bonus-tag {
+      display: inline-block;
+      background: linear-gradient(180deg, var(--orange), var(--orange2));
+      color: var(--dark1);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 999px;
+      margin-bottom: 22px;
+    }
+
+    .bonus-wrap h2 {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.8px;
+      margin-bottom: 14px;
+    }
+
+    .bonus-wrap > p { color: var(--muted); font-size: 17px; margin-bottom: 36px; }
+
+    .bonus-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      text-align: left;
+    }
+
+    .bonus-li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .bonus-li .check {
+      width: 22px;
+      height: 22px;
+      background: linear-gradient(180deg, var(--orange), var(--orange2));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--dark1);
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 767px) {
+      .bonus-wrap { padding: 36px 24px; }
+      .bonus-list { grid-template-columns: 1fr; }
+      .bonus-wrap h2 { font-size: 26px; }
+    }
+
+    /* ══════════════════════════════════════
+       PREÇO
+    ══════════════════════════════════════ */
+    .preco-sec {
+      background: var(--bg);
+      padding: 100px 0;
+    }
+
+    .preco-sec-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .preco-sec-header h2 {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -1.2px;
+      margin-bottom: 10px;
+    }
+
+    .preco-sec-header p { font-size: 18px; color: var(--muted); }
+
+    .preco-card {
+      max-width: 500px;
+      margin: 0 auto;
+      background: var(--bg3);
+      border: 1.5px solid rgba(255,123,5,0.35);
+      border-radius: 24px;
+      padding: 48px 44px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 0 80px rgba(255,123,5,0.1);
+    }
+
+    .preco-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--orange), var(--orange2));
+      border-radius: 24px 24px 0 0;
+    }
+
+    .preco-chip {
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, var(--orange), var(--orange2));
+      color: var(--dark1);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 6px 22px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .preco-de {
+      font-size: 15px;
+      color: var(--muted);
+      text-decoration: line-through;
+      margin-bottom: 4px;
+    }
+
+    .preco-inst { font-size: 16px; color: var(--muted); margin-bottom: 2px; }
+
+    .preco-big {
+      font-size: 64px;
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .preco-big sup {
+      font-size: 28px;
+      vertical-align: super;
+      letter-spacing: 0;
+      background: linear-gradient(180deg, var(--orange), var(--orange2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .preco-big .cents {
+      font-size: 32px;
+      background: linear-gradient(180deg, var(--orange), var(--orange2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .preco-avista {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .preco-features {
+      list-style: none;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .preco-features li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .preco-features li .fi {
+      width: 24px;
+      height: 24px;
+      background: rgba(255,123,5,0.12);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    .safe-txt {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    @media (max-width: 767px) {
+      .preco-card { padding: 40px 24px; }
+      .preco-big { font-size: 52px; }
+      .preco-sec-header h2 { font-size: 28px; }
+    }
+
+    /* ══════════════════════════════════════
+       GARANTIA
+    ══════════════════════════════════════ */
+    .garantia-sec {
+      background: var(--bg2);
+      padding: 100px 0;
+    }
+
+    .garantia-card {
+      max-width: 780px;
+      margin: 0 auto;
+      background: var(--bg3);
+      border: 1px solid rgba(34,197,94,0.2);
+      border-radius: 24px;
+      padding: 56px;
+      display: flex;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .g-seal {
+      min-width: 140px;
+      height: 140px;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 900;
+      text-align: center;
+      box-shadow: 0 0 60px rgba(34,197,94,0.25);
+      flex-shrink: 0;
+    }
+
+    .g-days { font-size: 2.8rem; line-height: 1; }
+    .g-lbl { font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
+
+    .g-content h2 {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.8px;
+      margin-bottom: 14px;
+    }
+
+    .g-content p { font-size: 16px; color: var(--muted); line-height: 1.75; }
+
+    @media (max-width: 640px) {
+      .garantia-card { flex-direction: column; text-align: center; padding: 36px 24px; }
+      .g-content h2 { font-size: 24px; }
+    }
+
+    /* ══════════════════════════════════════
+       AUTOR
+    ══════════════════════════════════════ */
+    .autor-sec { background: var(--bg); padding: 100px 0; }
+
+    .autor-card {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 56px;
+    }
+
+    .autor-ava {
+      min-width: 160px;
+      height: 160px;
+      background: var(--bg3);
+      border: 2px solid rgba(255,123,5,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      flex-shrink: 0;
+      box-shadow: 0 0 40px rgba(255,123,5,0.1);
+    }
+
+    .autor-info h2 {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.8px;
+      margin-bottom: 10px;
+    }
+
+    .autor-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .a-chip {
+      background: rgba(255,123,5,0.1);
+      border: 1px solid rgba(255,123,5,0.25);
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: 999px;
+    }
+
+    .autor-info p { font-size: 16px; color: var(--muted); line-height: 1.75; }
+
+    @media (max-width: 640px) {
+      .autor-card { flex-direction: column; text-align: center; }
+      .autor-chips { justify-content: center; }
+      .autor-info h2 { font-size: 24px; }
+    }
+
+    /* ══════════════════════════════════════
+       FAQ
+    ══════════════════════════════════════ */
+    .faq-sec {
+      background: var(--bg2);
+      padding: 100px 0;
+    }
+
+    .faq-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+
+    .faq-header h2 {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -1.2px;
+    }
+
+    .faq-list {
+      max-width: 740px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .faq-item {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .faq-item.open { border-color: rgba(255,123,5,0.3); }
+
+    .faq-btn {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      text-align: left;
+      padding: 22px 24px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .faq-chevron {
+      width: 30px;
+      height: 30px;
+      background: rgba(255,123,5,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--orange);
+      font-size: 0.8rem;
+      transition: transform 0.25s, background 0.2s;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-chevron {
+      transform: rotate(180deg);
+      background: rgba(255,123,5,0.2);
+    }
+
+    .faq-ans {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+
+    .faq-item.open .faq-ans { max-height: 250px; }
+
+    .faq-ans p {
+      padding: 0 24px 22px;
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 767px) { .faq-header h2 { font-size: 28px; } }
+
+    /* ══════════════════════════════════════
+       CTA FINAL
+    ══════════════════════════════════════ */
+    .cta-final {
+      background: #000;
+      background-image: url('https://flashcriativo.com.br/wp-content/uploads/2025/12/design-builder-9-1-complet-scaled.png');
+      background-position: bottom center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding: 120px 0;
+      text-align: center;
+    }
+
+    .cta-final-inner { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; text-align: left; }
+
+    .cta-final h2 {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -1.44px;
+      max-width: 720px;
+      line-height: 1.2;
+    }
+
+    .cta-final p { font-size: 20px; color: var(--muted); max-width: 520px; }
+
+    .cta-badges {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+
+    .cta-badge {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .cta-badge .dot {
+      width: 8px;
+      height: 8px;
+      background: linear-gradient(180deg, var(--orange), var(--orange2));
+      border-radius: 50%;
+    }
+
+    @media (max-width: 767px) {
+      .cta-final h2 { font-size: 30px; }
+      .cta-final p { font-size: 16px; }
+    }
+
+    /* ══════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════ */
+    footer {
+      background: #050505;
+      border-top: 1px solid var(--border);
+      padding: 48px 0;
+      text-align: center;
+    }
+
+    .footer-logo { margin-bottom: 20px; }
+    .footer-logo img { width: 140px; margin: 0 auto; }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 14px;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--orange); }
+
+    footer small { font-size: 13px; color: rgba(255,255,255,0.2); }
+
+    /* ══════════════════════════════════════
+       SECTION DIVIDER
+    ══════════════════════════════════════ */
+    .sec-title-center {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .sec-title-center h2 {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -1.2px;
+    }
+
+    @media (max-width: 767px) { .sec-title-center h2 { font-size: 28px; } }
+  </style>
+</head>
+<body>
+
+  <!-- ══ HERO ══ -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-inner">
+        <img
+          src="https://flashcriativo.com.br/wp-content/uploads/2025/12/Logo-1-1.png"
+          alt="Flash Criativo"
+          class="hero-logo"
+        />
+
+        <h1>
+          Transforme seus vídeos em
+          <span class="grad">conteúdos impossíveis de ignorar,</span>
+          com mais <span class="grad">retenção</span>, mais
+          <span class="grad">alcance</span> e mais
+          <span class="grad">vendas!</span>
+        </h1>
+
+        <h2>
+          Um método prático e direto para dominar o CapCut do básico ao avançado e usar cada ferramenta de forma estratégica, apenas com seu celular.
+        </h2>
+
+        <a href="https://pay.kiwify.com.br/xBpPNM4?afid=Hng1Behz" class="btn" target="_blank" rel="noopener">
+          <svg class="flash-ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 35" fill="none">
+            <path d="M29.6089 10.6923C28.8326 8.85728 27.7217 7.20906 26.3066 5.79432C25.0192 4.50654 23.5388 3.47084 21.8997 2.71021L21.2682 4.42518C22.6417 5.08221 23.9084 5.97563 25.017 7.08393C27.5828 9.65002 28.996 13.0617 28.996 16.6909C28.996 20.32 27.5828 23.7314 25.017 26.2975C22.7216 28.5929 19.7499 29.9656 16.5512 30.2298L15.5195 32.1002C17.561 32.0863 19.5416 31.6788 21.4087 30.8893C23.2441 30.113 24.8919 29.0022 26.3066 27.5871C27.7217 26.1723 28.8326 24.5245 29.6089 22.6895C30.4126 20.7888 30.8201 18.7707 30.8201 16.6909C30.8201 14.6111 30.4126 12.5926 29.6089 10.6923Z" fill="#381B04"/>
+            <path d="M1.82406 16.6909C1.82406 13.0618 3.23734 9.65004 5.80342 7.08395C6.90479 5.98295 8.16193 5.09391 9.52523 4.43797L9.88201 2.30237C9.72442 2.36293 9.56791 2.42604 9.41177 2.49207C7.5764 3.26839 5.92855 4.37924 4.51381 5.79434C3.09871 7.20908 1.98786 8.8573 1.21154 10.6923C0.407859 12.5926 0 14.6107 0 16.6909C0 18.7711 0.407859 20.7888 1.21154 22.6895C1.98786 24.5245 3.09871 26.1724 4.51381 27.5871C5.92855 29.0022 7.5764 30.113 9.41177 30.8894C10.3001 31.2655 11.2147 31.5544 12.149 31.7562L12.462 29.9576C9.95862 29.4068 7.65958 28.1536 5.80342 26.2975C3.23734 23.7314 1.82406 20.3197 1.82406 16.6909Z" fill="#381B04"/>
+            <path d="M23.8963 14.6457H16.3396L21.7311 0H11.3767L8.08789 19.6736H15.3622L12.7075 34.9333L23.8963 14.6457Z" fill="#381B04"/>
+          </svg>
+          Quero acelerar minhas edições
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ VSL ══ -->
+  <section class="vsl-sec">
+    <div class="wrap">
+      <div class="vsl-inner">
+        <h2>
+          Veja como o Flash Criativo vai acelerar sua
+          <span class="grad">evolução na edição</span> de vídeos
+        </h2>
+
+        <div class="vsl-video-wrap" onclick="openYoutube()">
+          <img
+            src="https://flashcriativo.com.br/wp-content/uploads/2025/12/VSL-curso.jpg"
+            alt="Assistir vídeo"
+            class="vsl-thumb"
+          />
+          <div class="vsl-play">
+            <div class="vsl-play-btn">
+              <svg width="22" height="26" viewBox="0 0 448 512" fill="white">
+                <path d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://pay.kiwify.com.br/xBpPNM4?afid=Hng1Behz" class="btn" target="_blank" rel="noopener">
+          <svg class="flash-ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 35" fill="none">
+            <path d="M29.6089 10.6923C28.8326 8.85728 27.7217 7.20906 26.3066 5.79432C25.0192 4.50654 23.5388 3.47084 21.8997 2.71021L21.2682 4.42518C22.6417 5.08221 23.9084 5.97563 25.017 7.08393C27.5828 9.65002 28.996 13.0617 28.996 16.6909C28.996 20.32 27.5828 23.7314 25.017 26.2975C22.7216 28.5929 19.7499 29.9656 16.5512 30.2298L15.5195 32.1002C17.561 32.0863 19.5416 31.6788 21.4087 30.8893C23.2441 30.113 24.8919 29.0022 26.3066 27.5871C27.7217 26.1723 28.8326 24.5245 29.6089 22.6895C30.4126 20.7888 30.8201 18.7707 30.8201 16.6909C30.8201 14.6111 30.4126 12.5926 29.6089 10.6923Z" fill="#381B04"/>
+            <path d="M1.82406 16.6909C1.82406 13.0618 3.23734 9.65004 5.80342 7.08395C6.90479 5.98295 8.16193 5.09391 9.52523 4.43797L9.88201 2.30237C9.72442 2.36293 9.56791 2.42604 9.41177 2.49207C7.5764 3.26839 5.92855 4.37924 4.51381 5.79434C3.09871 7.20908 1.98786 8.8573 1.21154 10.6923C0.407859 12.5926 0 14.6107 0 16.6909C0 18.7711 0.407859 20.7888 1.21154 22.6895C1.98786 24.5245 3.09871 26.1724 4.51381 27.5871C5.92855 29.0022 7.5764 30.113 9.41177 30.8894C10.3001 31.2655 11.2147 31.5544 12.149 31.7562L12.462 29.9576C9.95862 29.4068 7.65958 28.1536 5.80342 26.2975C3.23734 23.7314 1.82406 20.3197 1.82406 16.6909Z" fill="#381B04"/>
+            <path d="M23.8963 14.6457H16.3396L21.7311 0H11.3767L8.08789 19.6736H15.3622L12.7075 34.9333L23.8963 14.6457Z" fill="#381B04"/>
+          </svg>
+          Quero entrar para o curso
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ DORES + EXEMPLOS ══ -->
+  <section class="dores-sec">
+    <div class="wrap">
+      <div class="dores-grid">
+
+        <!-- Mascote -->
+        <div class="mascot-col">
+          <img
+            src="https://flashcriativo.com.br/wp-content/uploads/2025/12/flash.png"
+            alt="Flash Criativo mascote"
+            class="mascot-img"
+          />
+        </div>
+
+        <!-- Dores -->
+        <div class="dores-col">
+          <h3 class="dores-title">
+            Isso <span class="grad">acontece</span> com você?
+          </h3>
+
+          <div class="dor-item">
+            <div class="dor-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="30" viewBox="0 0 31 35" fill="none">
+                <path d="M29.6089 10.6923C28.8326 8.85726 27.7217 7.20905 26.3066 5.79431C25.0192 4.50652 23.5388 3.47082 21.8997 2.71019L21.2682 4.42517C22.6417 5.08219 23.9084 5.97562 25.017 7.08392C27.5828 9.65 28.996 13.0617 28.996 16.6909C28.996 20.32 27.5828 23.7314 25.017 26.2974C22.7216 28.5928 19.7499 29.9656 16.5512 30.2297L15.5195 32.1001C17.561 32.0863 19.5416 31.6788 21.4087 30.8893C23.2441 30.113 24.8919 29.0022 26.3066 27.5871C27.7217 26.1723 28.8326 24.5245 29.6089 22.6895C30.4126 20.7888 30.8201 18.7707 30.8201 16.6909C30.8201 14.6111 30.4126 12.5926 29.6089 10.6923Z" fill="url(#g1)"/>
+                <path d="M1.82406 16.6909C1.82406 13.0617 3.23734 9.65001 5.80342 7.08392C6.90479 5.98292 8.16193 5.09388 9.52523 4.43794L9.88201 2.30234C9.72442 2.3629 9.56791 2.42601 9.41177 2.49204C7.5764 3.26836 5.92855 4.37921 4.51381 5.79431C3.09871 7.20905 1.98786 8.85727 1.21154 10.6923C0.407859 12.5926 0 14.6107 0 16.6909C0 18.771 0.407859 20.7888 1.21154 22.6895C1.98786 24.5245 3.09871 26.1723 4.51381 27.5871C5.92855 29.0022 7.5764 30.113 9.41177 30.8893C10.3001 31.2655 11.2147 31.5544 12.149 31.7561L12.462 29.9576C9.95862 29.4067 7.65958 28.1536 5.80342 26.2975C3.23734 23.7314 1.82406 20.3196 1.82406 16.6909Z" fill="url(#g2)"/>
+                <path d="M23.8963 14.6457H16.3396L21.7311 0H11.3767L8.08789 19.6736H15.3622L12.7075 34.9333L23.8963 14.6457Z" fill="url(#g3)"/>
+                <defs>
+                  <linearGradient id="g1" x1="23" y1="2" x2="23" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#FF7B05"/><stop offset="1" stop-color="#FF9F05"/></linearGradient>
+                  <linearGradient id="g2" x1="6" y1="2" x2="6" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#FF7B05"/><stop offset="1" stop-color="#FF9F05"/></linearGradient>
+                  <linearGradient id="g3" x1="16" y1="0" x2="16" y2="35" gradientUnits="userSpaceOnUse"><stop stop-color="#FF7B05"/><stop offset="1" stop-color="#FF9F05"/></linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <p>Seus vídeos não prendem atenção e sempre flopam?</p>
+          </div>
+
+          <div class="dor-item">
+            <div class="dor-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="30" viewBox="0 0 31 35" fill="none">
+                <path d="M29.6089 10.6923C28.8326 8.85726 27.7217 7.20905 26.3066 5.79431C25.0192 4.50652 23.5388 3.47082 21.8997 2.71019L21.2682 4.42517C22.6417 5.08219 23.9084 5.97562 25.017 7.08392C27.5828 9.65 28.996 13.0617 28.996 16.6909C28.996 20.32 27.5828 23.7314 25.017 26.2974C22.7216 28.5928 19.7499 29.9656 16.5512 30.2297L15.5195 32.1001C17.561 32.0863 19.5416 31.6788 21.4087 30.8893C23.2441 30.113 24.8919 29.0022 26.3066 27.5871C27.7217 26.1723 28.8326 24.5245 29.6089 22.6895C30.4126 20.7888 30.8201 18.7707 30.8201 16.6909C30.8201 14.6111 30.4126 12.5926 29.6089 10.6923Z" fill="url(#g1)"/>
+                <path d="M1.82406 16.6909C1.82406 13.0617 3.23734 9.65001 5.80342 7.08392C6.90479 5.98292 8.16193 5.09388 9.52523 4.43794L9.88201 2.30234C9.72442 2.3629 9.56791 2.42601 9.41177 2.49204C7.5764 3.26836 5.92855 4.37921 4.51381 5.79431C3.09871 7.20905 1.98786 8.85727 1.21154 10.6923C0.407859 12.5926 0 14.6107 0 16.6909C0 18.771 0.407859 20.7888 1.21154 22.6895C1.98786 24.5245 3.09871 26.1723 4.51381 27.5871C5.92855 29.0022 7.5764 30.113 9.41177 30.8893C10.3001 31.2655 11.2147 31.5544 12.149 31.7561L12.462 29.9576C9.95862 29.4067 7.65958 28.1536 5.80342 26.2975C3.23734 23.7314 1.82406 20.3196 1.82406 16.6909Z" fill="url(#g2)"/>
+                <path d="M23.8963 14.6457H16.3396L21.7311 0H11.3767L8.08789 19.6736H15.3622L12.7075 34.9333L23.8963 14.6457Z" fill="url(#g3)"/>
+              </svg>
+            </div>
+            <p>Você passa horas editando e mesmo assim ninguém assiste até o final?</p>
+          </div>
+
+          <div class="dor-item">
+            <div class="dor-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="30" viewBox="0 0 31 35" fill="none">
+                <path d="M29.6089 10.6923C28.8326 8.85726 27.7217 7.20905 26.3066 5.79431C25.0192 4.50652 23.5388 3.47082 21.8997 2.71019L21.2682 4.42517C22.6417 5.08219 23.9084 5.97562 25.017 7.08392C27.5828 9.65 28.996 13.0617 28.996 16.6909C28.996 20.32 27.5828 23.7314 25.017 26.2974C22.7216 28.5928 19.7499 29.9656 16.5512 30.2297L15.5195 32.1001C17.561 32.0863 19.5416 31.6788 21.4087 30.8893C23.2441 30.113 24.8919 29.0022 26.3066 27.5871C27.7217 26.1723 28.8326 24.5245 29.6089 22.6895C30.4126 20.7888 30.8201 18.7707 30.8201 16.6909C30.8201 14.6111 30.4126 12.5926 29.6089 10.6923Z" fill="url(#g1)"/>
+                <path d="M1.82406 16.6909C1.82406 13.0617 3.23734 9.65001 5.80342 7.08392C6.90479 5.98292 8.16193 5.09388 9.52523 4.43794L9.88201 2.30234C9.72442 2.3629 9.56791 2.42601 9.41177 2.49204C7.5764 3.26836 5.92855 4.37921 4.51381 5.79431C3.09871 7.20905 1.98786 8.85727 1.21154 10.6923C0.407859 12.5926 0 14.6107 0 16.6909C0 18.771 0.407859 20.7888 1.21154 22.6895C1.98786 24.5245 3.09871 26.1723 4.51381 27.5871C5.92855 29.0022 7.5764 30.113 9.41177 30.8893C10.3001 31.2655 11.2147 31.5544 12.149 31.7561L12.462 29.9576C9.95862 29.4067 7.65958 28.1536 5.80342 26.2975C3.23734 23.7314 1.82406 20.3196 1.82406 16.6909Z" fill="url(#g2)"/>
+                <path d="M23.8963 14.6457H16.3396L21.7311 0H11.3767L8.08789 19.6736H15.3622L12.7075 34.9333L23.8963 14.6457Z" fill="url(#g3)"/>
+              </svg>
+            </div>
+            <p>Fica sem ideia do que colocar nos seus vídeos?</p>
+          </div>
+
+          <div class="dor-item">
+            <div class="dor-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="30" viewBox="0 0 31 35" fill="none">
+                <path d="M29.6089 10.6923C28.8326 8.85726 27.7217 7.20905 26.3066 5.79431C25.0192 4.50652 23.5388 3.47082 21.8997 2.71019L21.2682 4.42517C22.6417 5.08219 23.9084 5.97562 25.017 7.08392C27.5828 9.65 28.996 13.0617 28.996 16.6909C28.996 20.32 27.5828 23.7314 25.017 26.2974C22.7216 28.5928 19.7499 29.9656 16.5512 30.2297L15.5195 32.1001C17.561 32.0863 19.5416 31.6788 21.4087 30.8893C23.2441 30.113 24.8919 29.0022 26.3066 27.5871C27.7217 26.1723 28.8326 24.5245 29.6089 22.6895C30.4126 20.7888 30.8201 18.7707 30.8201 16.6909C30.8201 14.6111 30.4126 12.5926 29.6089 10.6923Z" fill="url(#g1)"/>
+                <path d="M1.82406 16.6909C1.82406 13.0617 3.23734 9.65001 5.80342 7.08392C6.90479 5.98292 8.16193 5.09388 9.52523 4.43794L9.88201 2.30234C9.72442 2.3629 9.56791 2.42601 9.41177 2.49204C7.5764 3.26836 5.92855 4.37921 4.51381 5.79431C3.09871 7.20905 1.98786 8.85727 1.21154 10.6923C0.407859 12.5926 0 14.6107 0 16.6909C0 18.771 0.407859 20.7888 1.21154 22.6895C1.98786 24.5245 3.09871 26.1723 4.51381 27.5871C5.92855 29.0022 7.5764 30.113 9.41177 30.8893C10.3001 31.2655 11.2147 31.5544 12.149 31.7561L12.462 29.9576C9.95862 29.4067 7.65958 28.1536 5.80342 26.2975C3.23734 23.7314 1.82406 20.3196 1.82406 16.6909Z" fill="url(#g2)"/>
+                <path d="M23.8963 14.6457H16.3396L21.7311 0H11.3767L8.08789 19.6736H15.3622L12.7075 34.9333L23.8963 14.6457Z" fill="url(#g3)"/>
+              </svg>
+            </div>
+            <p>Sente que seu conteúdo parece amador perto dos seus concorrentes?</p>
+          </div>
+        </div>
+
+        <!-- Exemplos de efeitos -->
+        <div class="exemplos-col">
+          <div class="exemplos-header">
+            <h3>Exemplos de <span class="grad">efeitos</span></h3>
+            <p>Veja alguns efeitos criativos que você vai dominar com o Flash Criativo</p>
+          </div>
+          <div class="videos-grid">
+            <div class="video-item">
+              <video src="https://flashcriativo.com.br/wp-content/uploads/2025/12/copy_775A4844-4E3B-4A99-AC70-29BA0D164A73.mov" autoplay loop muted playsinline controlsList="nodownload"></video>
+            </div>
+            <div class="video-item">
+              <video src="https://flashcriativo.com.br/wp-content/uploads/2025/12/copy_40A60DD4-A0A6-4E5F-8D27-41B1BF14E690-1.mov" autoplay loop muted playsinline controlsList="nodownload"></video>
+            </div>
+            <div class="video-item">
+              <video src="https://flashcriativo.com.br/wp-content/uploads/2025/12/copy_5E382242-2019-469E-8B52-8EAB68E0A1F1.mov" autoplay loop muted playsinline controlsList="nodownload"></video>
+            </div>
+            <div class="video-item">
+              <video src="https://flashcriativo.com.br/wp-content/uploads/2025/12/1226.mp4" autoplay loop muted playsinline controlsList="nodownload"></video>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ POR QUE VOCÊ PRECISA ══ -->
+  <section class="porq-sec">
+    <div class="wrap">
+      <div class="porq-inner">
+        <div class="porq-left">
+          <h2>
+            <span class="grad">Por que você precisa</span> desse curso?
+            (e não de qualquer outro)
+          </h2>
+        </div>
+        <div class="porq-right">
+          <div class="porq-item">
+            <div class="porq-icon">
+              <svg width="28" height="22" viewBox="0 0 70 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.0147877 8.47897C0.544122 3.81176 4.37614 0.216492 9.05252 0.000240644L48.8643 0C50.2915 0.11833 51.6747 0.55328 52.914 1.27343C54.1533 1.99358 55.2177 2.98094 56.0304 4.16422C56.7628 5.24211 57.2796 6.45252 57.552 7.72819L69.2518 1.90636C69.3261 1.86925 69.4081 1.85049 69.491 1.85164C69.5739 1.85278 69.6553 1.8738 69.7285 1.91294C69.8017 1.95208 69.8645 2.00821 69.9117 2.07664C69.9589 2.14508 69.9891 2.22384 69.9998 2.30637V8.90813L70 8.93107C70 9.14775 69.9357 9.35953 69.8154 9.53948C69.6952 9.71942 69.5242 9.8594 69.3245 9.9416C58.5569 15.3003 47.7916 20.6637 37.0286 26.0317L69.2516 42.029C69.4574 42.1007 69.6378 42.2312 69.7708 42.4044C69.9037 42.5776 69.9833 42.786 69.9998 43.0039V49.6193C69.9997 49.7195 69.9719 49.8178 69.9196 49.9031C69.8672 49.9884 69.7922 50.0575 69.703 50.1026C69.6139 50.1477 69.514 50.1671 69.4145 50.1586C69.3149 50.1501 69.2197 50.114 69.1394 50.0545C65.301 48.1041 61.4092 46.2661 57.5998 44.2766C57.3452 45.201 57.0038 46.0991 56.5802 46.9588C55.9347 48.1503 55.0486 49.1936 53.9786 50.0221C52.9085 50.8505 51.6781 51.4459 50.3658 51.7701C49.4879 51.9553 48.5902 52.0291 47.6939 51.9897L10.5874 51.9904C9.75163 51.9904 8.91108 51.9904 8.08005 51.9269C3.77275 51.2805 0.448637 47.778 0.0152637 43.4286V37.0318C0.0502875 36.765 0.160234 36.5137 0.332263 36.3073C0.504293 36.1008 0.731304 35.9478 0.986782 35.866C7.60429 32.5847 14.2073 29.274 20.8345 26.0073C14.1586 22.6723 7.47781 19.3471 0.79224 16.0315C0.565025 15.9308 0.371692 15.7662 0.235528 15.5577C0.0993645 15.3492 0.0261791 15.1056 0.0247886 14.8564C0.0147877 12.7354 -0.019263 10.6049 0.0147877 8.47897Z" fill="url(#pg1)"/>
+                <defs><linearGradient id="pg1" x1="35" y1="0" x2="35" y2="52" gradientUnits="userSpaceOnUse"><stop stop-color="#FF7B05"/><stop offset="1" stop-color="#FF9F05"/></linearGradient></defs>
+              </svg>
+            </div>
+            <h3>O curso mais completo de CapCut da internet</h3>
+            <p>Você aprende desde as ferramentas básicas até efeitos avançados, mesmo para você que está começando agora na edição.</p>
+          </div>
+          <div class="porq-item">
+            <div class="porq-icon">
+              <svg width="28" height="28" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M32 61.3342C25.3778 61.3342 19.7222 60.3897 15.0333 58.5008C10.3444 56.6119 8 54.0008 8 50.6675C8 49.2453 8.44444 47.9675 9.33333 46.8342C10.2222 45.7008 11.4667 44.6897 13.0667 43.8008L17.4 47.6675C16.3333 48.0231 15.3889 48.4786 14.5667 49.0342C13.7444 49.5897 13.3333 50.1342 13.3333 50.6675C13.3333 51.8231 15.1333 53.0008 18.7333 54.2008C22.3333 55.4008 26.7556 56.0008 32 56.0008C37.2444 56.0008 41.6667 55.4008 45.2667 54.2008C48.8667 53.0008 50.6667 51.8231 50.6667 50.6675C50.6667 50.1342 50.2556 49.5897 49.4333 49.0342C48.6111 48.4786 47.6667 48.0231 46.6 47.6675L50.9333 43.8008C52.5333 44.6897 53.7778 45.7008 54.6667 46.8342C55.5556 47.9675 56 49.2453 56 50.6675C56 54.0008 53.6556 56.6119 48.9667 58.5008C44.2778 60.3897 38.6222 61.3342 32 61.3342Z" fill="url(#pg2)"/>
+                <defs><linearGradient id="pg2" x1="32" y1="0" x2="32" y2="64" gradientUnits="userSpaceOnUse"><stop stop-color="#FF7B05"/><stop offset="1" stop-color="#FF9F05"/></linearGradient></defs>
+              </svg>
+            </div>
+            <h3>Efeitos criativos e raros</h3>
+            <p>Aprenda efeitos que poucas pessoas te ensinam. Efeitos que chamam muita atenção e destacam seus produtos de uma forma diferente do comum.</p>
+          </div>
+          <div class="porq-item">
+            <div class="porq-icon">
+              <svg width="22" height="28" viewBox="0 0 384 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M336 0H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zm0 464H48V48h288v416zM144 112h96c8.8 0 16-7.2 16-16s-7.2-16-16-16h-96c-8.8 0-16 7.2-16 16s7.2 16 16 16zm48 176c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm-89.6 128h179.2c12.4 0 22.4-8.6 22.4-19.2v-19.2c0-31.8-30.1-57.6-67.2-57.6-10.8 0-18.7 8-44.8 8-26.9 0-33.4-8-44.8-8-37.1 0-67.2 25.8-67.2 57.6v19.2c0 10.6 10 19.2 22.4 19.2z" fill="url(#pg3)"/>
+                <defs><linearGradient id="pg3" x1="192" y1="0" x2="192" y2="512" gradientUnits="userSpaceOnUse"><stop stop-color="#FF7B05"/><stop offset="1" stop-color="#FF9F05"/></linearGradient></defs>
+              </svg>
+            </div>
+            <h3>Crie sua identidade própria</h3>
+            <p>Te ensino a criar um estilo único nos vídeos e se destacar, visto que cada dia mais pessoas estão criando conteúdos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ MÓDULOS ══ -->
+  <section class="mod-sec">
+    <div class="wrap">
+      <div class="sec-title-center">
+        <h2>Conheça o curso — <span class="grad">O que você vai aprender?</span></h2>
+      </div>
+      <div class="mod-grid">
+        <div class="mod-card">
+          <div class="mod-label">Módulo 1</div>
+          <h3>Seja Bem-Vindo</h3>
+          <p>Receba todos os materiais essenciais para trazer praticidade e melhorar seus vídeos desde o primeiro dia.</p>
+        </div>
+        <div class="mod-card">
+          <div class="mod-label">Módulo 2</div>
+          <h3>Conhecendo o CapCut</h3>
+          <p>Aprenda todas as ferramentas básicas e entenda de verdade como o CapCut funciona. Legendas, Efeitos, Áudio, Filtros, Ajustes, CapCut PC e muito mais.</p>
+        </div>
+        <div class="mod-card">
+          <div class="mod-label">Módulo 3</div>
+          <h3>Seus Primeiros Efeitos</h3>
+          <p>Ferramentas avançadas que poucos criadores dominam. Textos animados, Máscara, Keyframe, Camadas e muito mais para criar efeitos impressionantes.</p>
+        </div>
+        <div class="mod-card">
+          <div class="mod-label">Módulo 4</div>
+          <h3>Efeitos Criativos</h3>
+          <p>O nível mais avançado: efeitos especiais exclusivos, transições cinematográficas e técnicas que vão diferenciar seus vídeos de todos os outros.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ BÔNUS ══ -->
+  <section class="bonus-sec">
+    <div class="wrap">
+      <div class="bonus-wrap">
+        <div class="bonus-tag">🎁 Bônus Exclusivo</div>
+        <h2>"Crie Seus Conteúdos"</h2>
+        <p>Um bônus completo para você nunca mais ficar sem ideia e sempre ter conteúdo relevante para postar.</p>
+        <div class="bonus-list">
+          <div class="bonus-li"><div class="check">✓</div> Banco de ideias de conteúdos</div>
+          <div class="bonus-li"><div class="check">✓</div> Criação de roteiros do zero</div>
+          <div class="bonus-li"><div class="check">✓</div> Técnicas de gravação profissional</div>
+          <div class="bonus-li"><div class="check">✓</div> Ferramentas de aceleração</div>
+          <div class="bonus-li"><div class="check">✓</div> Estratégias de alcance</div>
+          <div class="bonus-li"><div class="check">✓</div> Calendário editorial</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PREÇO ══ -->
+  <section class="preco-sec" id="preco">
+    <div class="wrap">
+      <div class="preco-sec-header">
+        <h2>Comece agora por <span class="grad">muito menos</span></h2>
+        <p>Investimento único com acesso vitalício a todo o conteúdo e bônus.</p>
+      </div>
+      <div class="preco-card">
+        <div class="preco-chip">🔥 Mais popular</div>
+        <p class="preco-de">De R$ 297,00</p>
+        <p class="preco-inst">12x de</p>
+        <div class="preco-big"><sup>R$</sup>10<span class="cents">,03</span></div>
+        <p class="preco-avista">ou R$ 97,00 à vista no Pix / Cartão</p>
+        <ul class="preco-features">
+          <li><div class="fi">⚡</div> +100 aulas completas</li>
+          <li><div class="fi">♾️</div> Acesso vitalício</li>
+          <li><div class="fi">🎁</div> Bônus "Crie Seus Conteúdos"</li>
+          <li><div class="fi">💬</div> Comunidade exclusiva no Telegram</li>
+          <li><div class="fi">🔄</div> Atualizações gratuitas</li>
+          <li><div class="fi">📱</div> Funciona no celular e no PC</li>
+        </ul>
+        <a href="https://pay.kiwify.com.br/xBpPNM4?afid=Hng1Behz" class="btn btn-wide" target="_blank" rel="noopener">
+          <svg class="flash-ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 35" fill="none">
+            <path d="M29.6089 10.6923C28.8326 8.85728 27.7217 7.20906 26.3066 5.79432C25.0192 4.50654 23.5388 3.47084 21.8997 2.71021L21.2682 4.42518C22.6417 5.08221 23.9084 5.97563 25.017 7.08393C27.5828 9.65002 28.996 13.0617 28.996 16.6909C28.996 20.32 27.5828 23.7314 25.017 26.2975C22.7216 28.5929 19.7499 29.9656 16.5512 30.2298L15.5195 32.1002C17.561 32.0863 19.5416 31.6788 21.4087 30.8893C23.2441 30.113 24.8919 29.0022 26.3066 27.5871C27.7217 26.1723 28.8326 24.5245 29.6089 22.6895C30.4126 20.7888 30.8201 18.7707 30.8201 16.6909C30.8201 14.6111 30.4126 12.5926 29.6089 10.6923Z" fill="#381B04"/>
+            <path d="M1.82406 16.6909C1.82406 13.0618 3.23734 9.65004 5.80342 7.08395C6.90479 5.98295 8.16193 5.09391 9.52523 4.43797L9.88201 2.30237C9.72442 2.36293 9.56791 2.42604 9.41177 2.49207C7.5764 3.26839 5.92855 4.37924 4.51381 5.79434C3.09871 7.20908 1.98786 8.8573 1.21154 10.6923C0.407859 12.5926 0 14.6107 0 16.6909C0 18.7711 0.407859 20.7888 1.21154 22.6895C1.98786 24.5245 3.09871 26.1724 4.51381 27.5871C5.92855 29.0022 7.5764 30.113 9.41177 30.8894C10.3001 31.2655 11.2147 31.5544 12.149 31.7562L12.462 29.9576C9.95862 29.4068 7.65958 28.1536 5.80342 26.2975C3.23734 23.7314 1.82406 20.3197 1.82406 16.6909Z" fill="#381B04"/>
+            <path d="M23.8963 14.6457H16.3396L21.7311 0H11.3767L8.08789 19.6736H15.3622L12.7075 34.9333L23.8963 14.6457Z" fill="#381B04"/>
+          </svg>
+          Quero acelerar minhas edições
+        </a>
+        <div class="safe-txt">🔒 Compra 100% segura · Kiwify · Parcelas sem juros</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ GARANTIA ══ -->
+  <section class="garantia-sec">
+    <div class="wrap">
+      <div class="garantia-card">
+        <div class="g-seal">
+          <span class="g-days">7</span>
+          <span>DIAS</span>
+          <span class="g-lbl">Garantia</span>
+        </div>
+        <div class="g-content">
+          <h2>Risco zero para você</h2>
+          <p>Se você não sentir que suas edições evoluíram em 7 dias, eu devolvo seu dinheiro. Simples assim. Sem burocracia, sem perguntas. Você tem uma semana completa para testar tudo e ver a diferença na prática.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ AUTOR ══ -->
+  <section class="autor-sec">
+    <div class="wrap">
+      <div class="autor-card">
+        <div class="autor-ava">🎬</div>
+        <div class="autor-info">
+          <h2>Gabriel Ramos</h2>
+          <div class="autor-chips">
+            <span class="a-chip">Social Media</span>
+            <span class="a-chip">Editor</span>
+            <span class="a-chip">Designer</span>
+            <span class="a-chip">6 anos de experiência</span>
+          </div>
+          <p>Desde 2020 no marketing digital, Gabriel acumulou mais de 6 anos de experiência em edição de vídeos, criação de conteúdo e design visual. Sua metodologia é baseada em aprendizado prático: você assiste, aplica e já vê resultado. Ensino simplificado, sem enrolação, focado em quem quer evoluir rápido.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FAQ ══ -->
+  <section class="faq-sec">
+    <div class="wrap">
+      <div class="faq-header">
+        <h2>Perguntas <span class="grad">frequentes</span></h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">
+            Preciso saber editar vídeos antes de começar?
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-ans"><p>Não! O curso foi desenvolvido para quem nunca editou um vídeo na vida. Começamos do absoluto zero, com tudo explicado de forma clara e progressiva.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">
+            O curso é para iniciantes ou para quem já edita?
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-ans"><p>Para os dois! Iniciantes vão aprender tudo do zero, e quem já edita vai descobrir técnicas avançadas e efeitos que provavelmente não conhece ainda.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">
+            Preciso ter o CapCut pago (Pro)?
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-ans"><p>Não é obrigatório. A versão gratuita já permite fazer quase tudo ensinado no curso. O Pro é recomendado para algumas funcionalidades extras, mas não é necessário para começar.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">
+            E se eu não tiver criatividade?
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-ans"><p>Criatividade não é um dom, é uma habilidade. O método usa uma lógica estruturada que qualquer pessoa pode seguir. Você não precisa ser criativo, precisa apenas aplicar o que aprendeu.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">
+            Funciona no celular ou precisa de computador?
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-ans"><p>O curso é focado principalmente no mobile (CapCut para celular), mas também abrange a versão desktop. Você pode editar de onde estiver, com o dispositivo que tiver.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CTA FINAL ══ -->
+  <section class="cta-final">
+    <div class="wrap">
+      <div class="cta-final-inner">
+        <h2>Pronto para transformar <span class="grad">seus vídeos?</span></h2>
+        <p>Junte-se a quem já está criando conteúdos impossíveis de ignorar.</p>
+        <a href="https://pay.kiwify.com.br/xBpPNM4?afid=Hng1Behz" class="btn" target="_blank" rel="noopener">
+          <svg class="flash-ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 35" fill="none">
+            <path d="M29.6089 10.6923C28.8326 8.85728 27.7217 7.20906 26.3066 5.79432C25.0192 4.50654 23.5388 3.47084 21.8997 2.71021L21.2682 4.42518C22.6417 5.08221 23.9084 5.97563 25.017 7.08393C27.5828 9.65002 28.996 13.0617 28.996 16.6909C28.996 20.32 27.5828 23.7314 25.017 26.2975C22.7216 28.5929 19.7499 29.9656 16.5512 30.2298L15.5195 32.1002C17.561 32.0863 19.5416 31.6788 21.4087 30.8893C23.2441 30.113 24.8919 29.0022 26.3066 27.5871C27.7217 26.1723 28.8326 24.5245 29.6089 22.6895C30.4126 20.7888 30.8201 18.7707 30.8201 16.6909C30.8201 14.6111 30.4126 12.5926 29.6089 10.6923Z" fill="#381B04"/>
+            <path d="M1.82406 16.6909C1.82406 13.0618 3.23734 9.65004 5.80342 7.08395C6.90479 5.98295 8.16193 5.09391 9.52523 4.43797L9.88201 2.30237C9.72442 2.36293 9.56791 2.42604 9.41177 2.49207C7.5764 3.26839 5.92855 4.37924 4.51381 5.79434C3.09871 7.20908 1.98786 8.8573 1.21154 10.6923C0.407859 12.5926 0 14.6107 0 16.6909C0 18.7711 0.407859 20.7888 1.21154 22.6895C1.98786 24.5245 3.09871 26.1724 4.51381 27.5871C5.92855 29.0022 7.5764 30.113 9.41177 30.8894C10.3001 31.2655 11.2147 31.5544 12.149 31.7562L12.462 29.9576C9.95862 29.4068 7.65958 28.1536 5.80342 26.2975C3.23734 23.7314 1.82406 20.3197 1.82406 16.6909Z" fill="#381B04"/>
+            <path d="M23.8963 14.6457H16.3396L21.7311 0H11.3767L8.08789 19.6736H15.3622L12.7075 34.9333L23.8963 14.6457Z" fill="#381B04"/>
+          </svg>
+          Garantir acesso agora
+        </a>
+        <div class="cta-badges">
+          <div class="cta-badge"><div class="dot"></div> Acesso imediato</div>
+          <div class="cta-badge"><div class="dot"></div> 7 dias de garantia</div>
+          <div class="cta-badge"><div class="dot"></div> Compra segura</div>
+          <div class="cta-badge"><div class="dot"></div> Sem mensalidade</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-logo">
+        <img src="https://flashcriativo.com.br/wp-content/uploads/2025/12/Logo-1-1.png" alt="Flash Criativo" />
+      </div>
+      <div class="footer-links">
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Termos de Uso</a>
+        <a href="https://pay.kiwify.com.br/xBpPNM4?afid=Hng1Behz" target="_blank" rel="noopener">Comprar</a>
+      </div>
+      <small>© 2025 Flash Criativo – Todos os Direitos Reservados</small>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    function openYoutube() {
+      window.open('https://youtu.be/-Rg5JmeQyGo', '_blank');
+    }
+  </script>
+
+</body>
+</html>
