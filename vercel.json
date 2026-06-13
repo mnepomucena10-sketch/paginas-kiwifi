@@ -1,4 +1,7 @@
 {
+  "rewrites": [
+    { "source": "/", "destination": "/15-agentes-gpt.html" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
