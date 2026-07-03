@@ -14,6 +14,41 @@
   fbq('init', '27474832508869906');
   fbq('track', 'PageView');
   </script>
+  <!-- fbclid capture: repassa o parâmetro do anúncio para o checkout Kiwify -->
+  <script>
+  (function(){
+    var params = new URLSearchParams(window.location.search);
+    var fbclid = params.get('fbclid');
+    if (fbclid) {
+      // Salva no cookie _fbc e localStorage para uso no onclick
+      var fbc = 'fb.1.' + Date.now() + '.' + fbclid;
+      document.cookie = '_fbc=' + fbc + ';path=/;max-age=7776000;SameSite=Lax';
+      localStorage.setItem('_fbc', fbc);
+      localStorage.setItem('_fbclid', fbclid);
+    }
+    // Lê _fbp gerado pelo pixel do Meta (cookie)
+    function getCookie(name) {
+      var m = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+      return m ? m[2] : null;
+    }
+    // Injeta fbclid e fbp em todos os links do checkout após DOM pronto
+    function patchCheckoutLinks() {
+      var fbclidVal = localStorage.getItem('_fbclid') || '';
+      var fbpVal = getCookie('_fbp') || '';
+      document.querySelectorAll('a[href*="pay.kiwify.com.br"]').forEach(function(a) {
+        var url = new URL(a.href);
+        if (fbclidVal) url.searchParams.set('src', fbclidVal);
+        if (fbpVal)    url.searchParams.set('sck', fbpVal);
+        a.href = url.toString();
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', patchCheckoutLinks);
+    } else {
+      patchCheckoutLinks();
+    }
+  })();
+  </script>
   <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=27474832508869906&ev=PageView&noscript=1"
   /></noscript>
