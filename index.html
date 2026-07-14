@@ -767,12 +767,12 @@
 
   /* ── Countdown timer (24h from first visit, stored in localStorage) */
   const KEY = 'agentes_cd';
-  let end = localStorage.getItem(KEY);
-  if (!end) {
-    end = Date.now() + 24 * 60 * 60 * 1000;
+  const DURACAO = 24 * 60 * 60 * 1000;
+  let end = parseInt(localStorage.getItem(KEY) || '0');
+  if (!end || end <= Date.now()) {
+    end = Date.now() + DURACAO;
     localStorage.setItem(KEY, end);
   }
-  end = parseInt(end);
 
   function tick() {
     const diff = Math.max(0, end - Date.now());
