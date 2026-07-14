@@ -263,20 +263,25 @@
 
     /* ── AGENTS */
     #agents { background: var(--gray-50); border-top: 1px solid var(--gray-200); }
-    .agents-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-top: 40px; }
+    .agents-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 32px; }
     .agent-card {
+      flex: 1 1 210px;
+      max-width: 240px;
       background: var(--white);
       border: 1px solid var(--gray-200);
       border-radius: var(--radius);
-      padding: 20px 16px;
+      padding: 18px 16px;
       box-shadow: var(--shadow-sm);
-      transition: border-color .2s, box-shadow .2s;
+      text-align: left;
+      transition: border-color .2s, box-shadow .2s, transform .2s;
     }
-    .agent-card:hover { border-color: #93c5fd; box-shadow: var(--shadow); }
-    .agent-num { font-size: .68rem; font-weight: 800; color: var(--blue-l); margin-bottom: 8px; letter-spacing: .06em; text-transform: uppercase; }
-    .agent-emoji { font-size: 1.6rem; margin-bottom: 8px; display: block; }
-    .agent-card h3 { font-size: .9rem; font-weight: 700; margin-bottom: 4px; }
+    .agent-card:hover { border-color: #93c5fd; box-shadow: var(--shadow); transform: translateY(-3px); }
+    .agent-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .agent-ico-badge { flex-shrink: 0; width: 38px; height: 38px; border-radius: 10px; background: #eff6ff; display: flex; align-items: center; justify-content: center; }
+    .agent-num { font-size: .66rem; font-weight: 800; color: var(--blue-l); letter-spacing: .06em; text-transform: uppercase; }
+    .agent-card h3 { font-size: .92rem; font-weight: 700; margin-bottom: 4px; }
     .agent-card p  { font-size: .8rem; color: var(--gray-600); line-height: 1.5; }
+    @media (max-width: 640px) { .agent-card { flex-basis: 44%; } }
 
     /* ── HOW */
     #how { background: var(--white); border-top: 1px solid var(--gray-200); }
@@ -483,7 +488,7 @@
     .icn { width: 30px; height: 30px; stroke: var(--blue-l); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
     .pain-card .icn { stroke: #dc2626; }
     .bonus-card .icn { stroke: var(--orange); }
-    .agent-card .icn { display: block; margin: 0 auto 10px; }
+    .agent-card .icn { width: 20px; height: 20px; }
     .pain-card .icn, .bonus-card .icn { display: block; margin: 0 auto 12px; }
 
     /* ── RESPONSIVE */
@@ -670,31 +675,31 @@
 
     <div class="agents-panel active" data-panel="1">
       <div class="agents-grid">
-        <div class="agent-card"><span class="agent-num">Agente 07</span><svg class="icn" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.1 8.1 20 20M8.1 15.9 20 4M14.5 9.5l-2.5 2.5"/></svg><h3>Remover Fundo</h3><p>Recorte imagens com bordas limpas.</p></div>
-        <div class="agent-card"><span class="agent-num">Agente 01</span><svg class="icn" viewBox="0 0 24 24"><path d="M20 20H7L3 16a2 2 0 0 1 0-2.8l9.2-9.2a2 2 0 0 1 2.8 0l4.8 4.8a2 2 0 0 1 0 2.8L13 18.4"/></svg><h3>Remover Objetos e Pessoas</h3><p>Elimine elementos indesejados da foto.</p></div>
-        <div class="agent-card"><span class="agent-num">Agente 04</span><svg class="icn" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg><h3>Melhorar Nitidez</h3><p>Recupere detalhes de imagens borradas.</p></div>
-        <div class="agent-card"><span class="agent-num">Agente 08</span><svg class="icn" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg><h3>Upscaling</h3><p>Aumente a resolução preservando qualidade.</p></div>
-        <div class="agent-card"><span class="agent-num">Agente 12</span><svg class="icn" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5s1.2 1.8 3.5 1.8 3.5-1.8 3.5-1.8M9 9.5h.01M15 9.5h.01"/></svg><h3>Correção de Pele</h3><p>Retoques com aparência natural.</p></div>
+        <div class="agent-card"><div class="agent-head"><span class="agent-ico-badge"><svg class="icn" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.1 8.1 20 20M8.1 15.9 20 4M14.5 9.5l-2.5 2.5"/></svg></span><span class="agent-num">Agente 07</span></div><h3>Remover Fundo</h3><p>Recorte imagens com bordas limpas.</p></div>
+        <div class="agent-card"><div class="agent-head"><span class="agent-ico-badge"><svg class="icn" viewBox="0 0 24 24"><path d="M20 20H7L3 16a2 2 0 0 1 0-2.8l9.2-9.2a2 2 0 0 1 2.8 0l4.8 4.8a2 2 0 0 1 0 2.8L13 18.4"/></svg></span><span class="agent-num">Agente 01</span></div><h3>Remover Objetos e Pessoas</h3><p>Elimine elementos indesejados da foto.</p></div>
+        <div class="agent-card"><div class="agent-head"><span class="agent-ico-badge"><svg class="icn" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></span><span class="agent-num">Agente 04</span></div><h3>Melhorar Nitidez</h3><p>Recupere detalhes de imagens borradas.</p></div>
+        <div class="agent-card"><div class="agent-head"><span class="agent-ico-badge"><svg class="icn" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span><span class="agent-num">Agente 08</span></div><h3>Upscaling</h3><p>Aumente a resolução preservando qualidade.</p></div>
+        <div class="agent-card"><div class="agent-head"><span class="agent-ico-badge"><svg class="icn" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5s1.2 1.8 3.5 1.8 3.5-1.8 3.5-1.8M9 9.5h.01M15 9.5h.01"/></svg></span><span class="agent-num">Agente 12</span></div><h3>Correção de Pele</h3><p>Retoques com aparência natural.</p></div>
       </div>
     </div>
 
     <div class="agents-panel" data-panel="2">
       <div class="agents-grid">
-        <div class="agent-card"><span class="agent-num">Agente 14</span><svg class="icn" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="9" cy="9" r="2"/><path d="M21 15.5 16 10 5 21"/></svg><h3>Substituição de Fundo</h3><p>Troque o fundo por outro cenário.</p></div>
-        <div class="agent-card"><span class="agent-num">Agente 03</span><svg class="icn" viewBox="0 0 24 24"><path d="M12 2 22 8.5 12 15 2 8.5 12 2z"/><path d="M2 15.5 12 22l10-6.5"/></svg><h3>Manipulação Visual</h3><p>Composições e montagens guiadas.</p></div>
-        <div class="agent-card"><span class="agent-num">Agente 10</span><svg class="icn" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><h3>Expansão de Imagem</h3><p>Amplie os limites da foto com coerência.</p></div>
-        <div class="agent-card"><span class="agent-num">Agente 09</span><svg class="icn" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="9" r="2.8"/><path d="M16.5 14.5c3 .3 5 2.5 5 5.5"/></svg><h3>Duas Pessoas na Imagem</h3><p>Composições com duas pessoas na cena.</p></div>
-        <div class="agent-card"><span class="agent-num">Agente 15</span><svg class="icn" viewBox="0 0 24 24"><path d="M12 3C7 3 4 6.8 4 11.5V21l2.8-2 2.4 2 2.8-2 2.8 2 2.4-2 2.8 2v-9.5C20 6.8 17 3 12 3z"/><circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/></svg><h3>Criador de Mascote</h3><p>Crie mascotes para marcas.</p></div>
+        <div class="agent-card"><div class="agent-head"><span class="agent-ico-badge"><svg class="icn" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="9" cy="9" r="2"/><path d="M21 15.5 16 10 5 21"/></svg></span><span class="agent-num">Agente 14</span></div><h3>Substituição de Fundo</h3><p>Troque o fundo por outro cenário.</p></div>
+        <div class="agent-card"><div class="agent-head"><span class="agent-ico-badge"><svg class="icn" viewBox="0 0 24 24"><path d="M12 2 22 8.5 12 15 2 8.5 12 2z"/><path d="M2 15.5 12 22l10-6.5"/></svg></span><span class="agent-num">Agente 03</span></div><h3>Manipulação Visual</h3><p>Composições e montagens guiadas.</p></div>
+        <div class="agent-card"><div class="agent-head"><span class="agent-ico-badge"><svg class="icn" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span><span class="agent-num">Agente 10</span></div><h3>Expansão de Imagem</h3><p>Amplie os limites da foto com coerência.</p></div>
+        <div class="agent-card"><div class="agent-head"><span class="agent-ico-badge"><svg class="icn" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="9" r="2.8"/><path d="M16.5 14.5c3 .3 5 2.5 5 5.5"/></svg></span><span class="agent-num">Agente 09</span></div><h3>Duas Pessoas na Imagem</h3><p>Composições com duas pessoas na cena.</p></div>
+        <div class="agent-card"><div class="agent-head"><span class="agent-ico-badge"><svg class="icn" viewBox="0 0 24 24"><path d="M12 3C7 3 4 6.8 4 11.5V21l2.8-2 2.4 2 2.8-2 2.8 2 2.4-2 2.8 2v-9.5C20 6.8 17 3 12 3z"/><circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/></svg></span><span class="agent-num">Agente 15</span></div><h3>Criador de Mascote</h3><p>Crie mascotes para marcas.</p></div>
       </div>
     </div>
 
     <div class="agents-panel" data-panel="3">
       <div class="agents-grid">
-        <div class="agent-card"><span class="agent-num">Agente 05</span><svg class="icn" viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10 18.5h4"/></svg><h3>Aplicar Mockups</h3><p>Apresente seu design em mockups realistas.</p></div>
-        <div class="agent-card"><span class="agent-num">Agente 06</span><svg class="icn" viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/></svg><h3>Vetorizar Logo</h3><p>Transforme bitmap em vetor escalável.</p></div>
-        <div class="agent-card"><span class="agent-num">Agente 13</span><svg class="icn" viewBox="0 0 24 24"><path d="M12 21a9 9 0 1 1 9-9c0 2-1.5 3-3 3h-2a2.5 2.5 0 0 0-2 4c.5.7 0 2-2 2z"/><circle cx="7.5" cy="10.5" r=".8"/><circle cx="12" cy="7.5" r=".8"/><circle cx="16.5" cy="10.5" r=".8"/></svg><h3>Trocar Cor de Objetos</h3><p>Mude cores preservando a textura.</p></div>
-        <div class="agent-card"><span class="agent-num">Agente 02</span><svg class="icn" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><h3>Ajustar Iluminação</h3><p>Corrija ou recrie a luz da foto.</p></div>
-        <div class="agent-card"><span class="agent-num">Agente 11</span><svg class="icn" viewBox="0 0 24 24"><path d="M12 2.7s6.5 7.1 6.5 12a6.5 6.5 0 0 1-13 0c0-4.9 6.5-12 6.5-12z"/><path d="M9.5 14.5a3 3 0 0 0 3 3"/></svg><h3>Desfoque Profissional</h3><p>Desfoque seletivo estilo câmera.</p></div>
+        <div class="agent-card"><div class="agent-head"><span class="agent-ico-badge"><svg class="icn" viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10 18.5h4"/></svg></span><span class="agent-num">Agente 05</span></div><h3>Aplicar Mockups</h3><p>Apresente seu design em mockups realistas.</p></div>
+        <div class="agent-card"><div class="agent-head"><span class="agent-ico-badge"><svg class="icn" viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/></svg></span><span class="agent-num">Agente 06</span></div><h3>Vetorizar Logo</h3><p>Transforme bitmap em vetor escalável.</p></div>
+        <div class="agent-card"><div class="agent-head"><span class="agent-ico-badge"><svg class="icn" viewBox="0 0 24 24"><path d="M12 21a9 9 0 1 1 9-9c0 2-1.5 3-3 3h-2a2.5 2.5 0 0 0-2 4c.5.7 0 2-2 2z"/><circle cx="7.5" cy="10.5" r=".8"/><circle cx="12" cy="7.5" r=".8"/><circle cx="16.5" cy="10.5" r=".8"/></svg></span><span class="agent-num">Agente 13</span></div><h3>Trocar Cor de Objetos</h3><p>Mude cores preservando a textura.</p></div>
+        <div class="agent-card"><div class="agent-head"><span class="agent-ico-badge"><svg class="icn" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span><span class="agent-num">Agente 02</span></div><h3>Ajustar Iluminação</h3><p>Corrija ou recrie a luz da foto.</p></div>
+        <div class="agent-card"><div class="agent-head"><span class="agent-ico-badge"><svg class="icn" viewBox="0 0 24 24"><path d="M12 2.7s6.5 7.1 6.5 12a6.5 6.5 0 0 1-13 0c0-4.9 6.5-12 6.5-12z"/><path d="M9.5 14.5a3 3 0 0 0 3 3"/></svg></span><span class="agent-num">Agente 11</span></div><h3>Desfoque Profissional</h3><p>Desfoque seletivo estilo câmera.</p></div>
       </div>
     </div>
   </div>
