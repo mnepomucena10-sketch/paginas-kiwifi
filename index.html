@@ -404,6 +404,13 @@
     /* ── DIVIDER */
     .sep { width: 100%; height: 1px; background: var(--gray-200); }
 
+    /* ── ÍCONES SVG */
+    .icn { width: 30px; height: 30px; stroke: var(--blue-l); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .pain-card .icn { stroke: #dc2626; }
+    .bonus-card .icn { stroke: var(--orange); }
+    .agent-card .icn { display: block; margin: 0 auto 10px; }
+    .pain-card .icn, .bonus-card .icn { display: block; margin: 0 auto 12px; }
+
     /* ── RESPONSIVE */
     @media (max-width: 640px) {
       .section { padding: 56px 0; }
@@ -418,7 +425,7 @@
 
 <!-- ══ COUNTDOWN BAR -->
 <div id="countdown-bar">
-  🔥 Oferta especial expira em: <span id="timer"><span class="tc" id="t-h">00</span>h <span class="tc" id="t-m">00</span>m <span class="tc" id="t-s">00</span>s</span>
+  Oferta especial expira em: <span id="timer"><span class="tc" id="t-h">00</span>h <span class="tc" id="t-m">00</span>m <span class="tc" id="t-s">00</span>s</span>
 </div>
 
 <!-- ══ STICKY BAR -->
@@ -439,7 +446,7 @@
 <!-- ══════════════════════════════════ HERO -->
 <section id="hero">
   <div class="container">
-    <span class="tag">🤖 Edição Profissional · Acesso Imediato</span>
+    <span class="tag">Edição Profissional · Acesso Imediato</span>
     <h1>
       Entregue <em>em minutos</em> a edição<br />
       que hoje toma <em>horas</em> do seu dia
@@ -483,10 +490,10 @@
     <h2 class="section-title">Você está <span style="color:var(--blue-l)">perdendo tempo</span> em tarefas que a IA já resolve</h2>
     <p class="section-sub">Reconhece alguma dessas situações?</p>
     <div class="pain-grid">
-      <div class="pain-card"><span class="pi">⏳</span><p>Horas removendo fundos e objetos manualmente no Photoshop</p></div>
-      <div class="pain-card"><span class="pi">💸</span><p>Pagando caro por ferramentas que fazem só uma coisa cada</p></div>
-      <div class="pain-card"><span class="pi">😤</span><p>Perdendo clientes por não conseguir entregar rápido o suficiente</p></div>
-      <div class="pain-card"><span class="pi">🤯</span><p>Sem saber por onde começar a usar IA no design profissionalmente</p></div>
+      <div class="pain-card"><svg class="icn" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><p>Horas removendo fundos e objetos manualmente no Photoshop</p></div>
+      <div class="pain-card"><svg class="icn" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></svg><p>Pagando caro por ferramentas que fazem só uma coisa cada</p></div>
+      <div class="pain-card"><svg class="icn" viewBox="0 0 24 24"><path d="M22 17l-7.5-7.5-4 4L2 5"/><path d="M16 17h6v-6"/></svg><p>Perdendo clientes por não conseguir entregar rápido o suficiente</p></div>
+      <div class="pain-card"><svg class="icn" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.2 9a2.8 2.8 0 0 1 5.5.7c0 1.8-2.7 2.3-2.7 3.8M12 17h.01"/></svg><p>Sem saber por onde começar a usar IA no design profissionalmente</p></div>
     </div>
   </div>
 </section>
@@ -549,21 +556,21 @@
     <h2 class="section-title">15 Agentes Especializados à sua disposição</h2>
     <p class="section-sub">Cada agente treinado para uma tarefa específica. Sem curva de aprendizado.</p>
     <div class="agents-grid">
-      <div class="agent-card"><span class="agent-num">Agente 01</span><span class="agent-emoji">🧹</span><h3>Remover Objetos e Pessoas</h3><p>Elimine qualquer elemento indesejado com precisão.</p></div>
-      <div class="agent-card"><span class="agent-num">Agente 02</span><span class="agent-emoji">💡</span><h3>Especialista em Iluminação</h3><p>Ajuste ou recrie a iluminação de qualquer foto.</p></div>
-      <div class="agent-card"><span class="agent-num">Agente 03</span><span class="agent-emoji">🧠</span><h3>Manipulação Visual</h3><p>Composições complexas sem esforço.</p></div>
-      <div class="agent-card"><span class="agent-num">Agente 04</span><span class="agent-emoji">✨</span><h3>Especialista em Nitidez</h3><p>Recupere detalhes e deixe imagens mais nítidas.</p></div>
-      <div class="agent-card"><span class="agent-num">Agente 05</span><span class="agent-emoji">📱</span><h3>Aplicar Mockups</h3><p>Insira seu design em mockups realistas.</p></div>
-      <div class="agent-card"><span class="agent-num">Agente 06</span><span class="agent-emoji">🔷</span><h3>Vetorizar Logo</h3><p>Transforme bitmap em vetor limpo e escalável.</p></div>
-      <div class="agent-card"><span class="agent-num">Agente 07</span><span class="agent-emoji">🪄</span><h3>Remover Fundo</h3><p>Recorte imagens com bordas perfeitas.</p></div>
-      <div class="agent-card"><span class="agent-num">Agente 08</span><span class="agent-emoji">🔍</span><h3>Upscaling</h3><p>Aumente a resolução sem perder qualidade.</p></div>
-      <div class="agent-card"><span class="agent-num">Agente 09</span><span class="agent-emoji">👥</span><h3>Duas Pessoas na Imagem</h3><p>Composições realistas com duas pessoas.</p></div>
-      <div class="agent-card"><span class="agent-num">Agente 10</span><span class="agent-emoji">🖼️</span><h3>Expansão de Imagem</h3><p>Expanda os limites da foto inteligentemente.</p></div>
-      <div class="agent-card"><span class="agent-num">Agente 11</span><span class="agent-emoji">🌫️</span><h3>Especialista em Desfoque</h3><p>Desfoque seletivo estilo câmera profissional.</p></div>
-      <div class="agent-card"><span class="agent-num">Agente 12</span><span class="agent-emoji">🌟</span><h3>Correção de Pele</h3><p>Retoques naturais e profissionais.</p></div>
-      <div class="agent-card"><span class="agent-num">Agente 13</span><span class="agent-emoji">🎨</span><h3>Trocar Cor de Objetos</h3><p>Mude a cor preservando textura.</p></div>
-      <div class="agent-card"><span class="agent-num">Agente 14</span><span class="agent-emoji">🏙️</span><h3>Substituição de Fundo</h3><p>Troque o fundo por qualquer cenário.</p></div>
-      <div class="agent-card"><span class="agent-num">Agente 15</span><span class="agent-emoji">🦁</span><h3>Criador de Mascote</h3><p>Crie mascotes exclusivos para marcas.</p></div>
+      <div class="agent-card"><span class="agent-num">Agente 01</span><svg class="icn" viewBox="0 0 24 24"><path d="M20 20H7L3 16a2 2 0 0 1 0-2.8l9.2-9.2a2 2 0 0 1 2.8 0l4.8 4.8a2 2 0 0 1 0 2.8L13 18.4"/></svg><h3>Remover Objetos e Pessoas</h3><p>Elimine qualquer elemento indesejado com precisão.</p></div>
+      <div class="agent-card"><span class="agent-num">Agente 02</span><svg class="icn" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><h3>Especialista em Iluminação</h3><p>Ajuste ou recrie a iluminação de qualquer foto.</p></div>
+      <div class="agent-card"><span class="agent-num">Agente 03</span><svg class="icn" viewBox="0 0 24 24"><path d="M12 2 22 8.5 12 15 2 8.5 12 2z"/><path d="M2 15.5 12 22l10-6.5"/></svg><h3>Manipulação Visual</h3><p>Composições complexas sem esforço.</p></div>
+      <div class="agent-card"><span class="agent-num">Agente 04</span><svg class="icn" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg><h3>Especialista em Nitidez</h3><p>Recupere detalhes e deixe imagens mais nítidas.</p></div>
+      <div class="agent-card"><span class="agent-num">Agente 05</span><svg class="icn" viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10 18.5h4"/></svg><h3>Aplicar Mockups</h3><p>Insira seu design em mockups realistas.</p></div>
+      <div class="agent-card"><span class="agent-num">Agente 06</span><svg class="icn" viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/></svg><h3>Vetorizar Logo</h3><p>Transforme bitmap em vetor limpo e escalável.</p></div>
+      <div class="agent-card"><span class="agent-num">Agente 07</span><svg class="icn" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.1 8.1 20 20M8.1 15.9 20 4M14.5 9.5l-2.5 2.5"/></svg><h3>Remover Fundo</h3><p>Recorte imagens com bordas perfeitas.</p></div>
+      <div class="agent-card"><span class="agent-num">Agente 08</span><svg class="icn" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg><h3>Upscaling</h3><p>Aumente a resolução sem perder qualidade.</p></div>
+      <div class="agent-card"><span class="agent-num">Agente 09</span><svg class="icn" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="9" r="2.8"/><path d="M16.5 14.5c3 .3 5 2.5 5 5.5"/></svg><h3>Duas Pessoas na Imagem</h3><p>Composições realistas com duas pessoas.</p></div>
+      <div class="agent-card"><span class="agent-num">Agente 10</span><svg class="icn" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><h3>Expansão de Imagem</h3><p>Expanda os limites da foto inteligentemente.</p></div>
+      <div class="agent-card"><span class="agent-num">Agente 11</span><svg class="icn" viewBox="0 0 24 24"><path d="M12 2.7s6.5 7.1 6.5 12a6.5 6.5 0 0 1-13 0c0-4.9 6.5-12 6.5-12z"/><path d="M9.5 14.5a3 3 0 0 0 3 3"/></svg><h3>Especialista em Desfoque</h3><p>Desfoque seletivo estilo câmera profissional.</p></div>
+      <div class="agent-card"><span class="agent-num">Agente 12</span><svg class="icn" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5s1.2 1.8 3.5 1.8 3.5-1.8 3.5-1.8M9 9.5h.01M15 9.5h.01"/></svg><h3>Correção de Pele</h3><p>Retoques naturais e profissionais.</p></div>
+      <div class="agent-card"><span class="agent-num">Agente 13</span><svg class="icn" viewBox="0 0 24 24"><path d="M12 21a9 9 0 1 1 9-9c0 2-1.5 3-3 3h-2a2.5 2.5 0 0 0-2 4c.5.7 0 2-2 2z"/><circle cx="7.5" cy="10.5" r=".8"/><circle cx="12" cy="7.5" r=".8"/><circle cx="16.5" cy="10.5" r=".8"/></svg><h3>Trocar Cor de Objetos</h3><p>Mude a cor preservando textura.</p></div>
+      <div class="agent-card"><span class="agent-num">Agente 14</span><svg class="icn" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="9" cy="9" r="2"/><path d="M21 15.5 16 10 5 21"/></svg><h3>Substituição de Fundo</h3><p>Troque o fundo por qualquer cenário.</p></div>
+      <div class="agent-card"><span class="agent-num">Agente 15</span><svg class="icn" viewBox="0 0 24 24"><path d="M12 3C7 3 4 6.8 4 11.5V21l2.8-2 2.4 2 2.8-2 2.8 2 2.4-2 2.8 2v-9.5C20 6.8 17 3 12 3z"/><circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/></svg><h3>Criador de Mascote</h3><p>Crie mascotes exclusivos para marcas.</p></div>
     </div>
   </div>
 </section>
@@ -593,14 +600,14 @@
 <!-- ══════════════════════════════════ BONUS -->
 <section id="bonus" class="section">
   <div class="container text-center">
-    <span class="tag orange">🎁 Bônus Exclusivos</span>
+    <span class="tag orange">Bônus Exclusivos</span>
     <h2 class="section-title">Leve também esses <span style="color:var(--orange)">bônus gratuitos</span></h2>
     <p class="section-sub">Incluídos na sua compra, sem custo adicional.</p>
     <div class="bonus-grid">
-      <div class="bonus-card"><span class="bonus-pill">Bônus 1</span><span class="bonus-icon">📊</span><h3>Guia de Planejamento Financeiro</h3><p>Organize sua renda como freelancer e saiba exatamente quanto cobrar.</p></div>
-      <div class="bonus-card"><span class="bonus-pill">Bônus 2</span><span class="bonus-icon">📈</span><h3>Análise de Vendas para Designers</h3><p>Entenda quais serviços vendem mais e como precificar com estratégia.</p></div>
-      <div class="bonus-card"><span class="bonus-pill">Bônus 3</span><span class="bonus-icon">🤖</span><h3>Mini-Curso de Estratégia com IA</h3><p>Monte uma estratégia de trabalho com IA do zero ao avançado.</p></div>
-      <div class="bonus-card"><span class="bonus-pill">Bônus 4</span><span class="bonus-icon">💬</span><h3>Comunidade VIP no WhatsApp</h3><p>Suporte e networking com designers que usam IA profissionalmente.</p></div>
+      <div class="bonus-card"><span class="bonus-pill">Bônus 1</span><svg class="icn" viewBox="0 0 24 24"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6"/><rect x="12" y="8" width="3" height="10"/><rect x="17" y="5" width="3" height="13"/></svg><h3>Guia de Planejamento Financeiro</h3><p>Organize sua renda como freelancer e saiba exatamente quanto cobrar.</p></div>
+      <div class="bonus-card"><span class="bonus-pill">Bônus 2</span><svg class="icn" viewBox="0 0 24 24"><path d="M2 17l7.5-7.5 4 4L22 5"/><path d="M16 5h6v6"/></svg><h3>Análise de Vendas para Designers</h3><p>Entenda quais serviços vendem mais e como precificar com estratégia.</p></div>
+      <div class="bonus-card"><span class="bonus-pill">Bônus 3</span><svg class="icn" viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="12" rx="2.5"/><path d="M12 7V4M8 4h8"/><circle cx="9" cy="13" r="1"/><circle cx="15" cy="13" r="1"/></svg><h3>Mini-Curso de Estratégia com IA</h3><p>Monte uma estratégia de trabalho com IA do zero ao avançado.</p></div>
+      <div class="bonus-card"><span class="bonus-pill">Bônus 4</span><svg class="icn" viewBox="0 0 24 24"><path d="M21 12a8.5 8.5 0 0 1-8.5 8.5c-1.6 0-3-.4-4.3-1L3 21l1.5-5.2a8.5 8.5 0 1 1 16.5-3.8z"/></svg><h3>Comunidade VIP no WhatsApp</h3><p>Suporte e networking com designers que usam IA profissionalmente.</p></div>
     </div>
   </div>
 </section>
@@ -655,7 +662,7 @@
     <p class="section-sub">Preço promocional por tempo limitado</p>
     <div class="price-wrapper" id="PAGAMENTO">
       <div class="price-box">
-        <span class="price-badge">🔥 Oferta por tempo limitado</span>
+        <span class="price-badge">Oferta por tempo limitado</span>
         <p class="price-name">15 AgentesGPT — Edição Profissional</p>
         <p class="price-from">De R$ 67,00</p>
         <div class="price-value"><sup>R$</sup>27<span class="cents">,00</span></div>
@@ -676,13 +683,13 @@
         </a>
         <div style="margin-top:20px;"></div>
         <div class="pay-row">
-          <span class="pay-chip">💳 Crédito</span>
-          <span class="pay-chip">🏦 PIX</span>
-          <span class="pay-chip">📋 Boleto</span>
-          <span class="pay-chip">📲 Débito</span>
+          <span class="pay-chip">Crédito</span>
+          <span class="pay-chip">PIX</span>
+          <span class="pay-chip">Boleto</span>
+          <span class="pay-chip">Débito</span>
         </div>
         <div class="guarantee">
-          <div class="g-icon">🛡️</div>
+          <div class="g-icon"><svg class="icn" viewBox="0 0 24 24" style="stroke:#16a34a;"><path d="M12 2l8 3.5v5.2c0 5-3.4 9.3-8 10.8-4.6-1.5-8-5.8-8-10.8V5.5L12 2z"/><path d="M8.5 12l2.5 2.5 4.5-4.5"/></svg></div>
           <p><strong>Garantia incondicional de 7 dias.</strong> Se não ficar satisfeito por qualquer motivo, devolvemos 100% do seu dinheiro sem burocracia.</p>
         </div>
       </div>
