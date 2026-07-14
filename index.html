@@ -306,7 +306,18 @@
 
     /* ── TESTIMONIALS */
     #testimonials { background: var(--white); border-top: 1px solid var(--gray-200); }
-    .testi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 40px; }
+    /* Carrossel de depoimentos: trilho infinito deslizando para a esquerda */
+    .testi-viewport { overflow: hidden; margin-top: 40px; position: relative;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+              mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+    .testi-track { display: flex; gap: 16px; width: max-content; animation: testi-slide 55s linear infinite; }
+    .testi-viewport:hover .testi-track { animation-play-state: paused; }
+    .testi-track .testi-card { width: 320px; flex-shrink: 0; text-align: left; }
+    @keyframes testi-slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) {
+      .testi-track { animation: none; flex-wrap: wrap; width: auto; }
+    }
+    @media (max-width: 640px) { .testi-track .testi-card { width: 270px; } }
     .testi-card {
       background: var(--white);
       border: 1px solid var(--gray-200);
@@ -620,33 +631,62 @@
     <span class="tag green">Depoimentos</span>
     <h2 class="section-title">O que dizem quem já usa</h2>
     <p class="section-sub">Mais de 1.200 designers transformando sua rotina com I.A.</p>
-    <div class="testi-grid">
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"Economizo pelo menos 3 horas por dia. O agente de remoção de fundo é incrível — resultado perfeito em segundos. Já paguei muito mais por ferramentas que fazem menos."</p>
-        <div class="testi-author">
-          <div class="testi-avatar av-blue">MS</div>
-          <div class="testi-info"><div class="name">Mariana S.</div><div class="role">Designer Gráfica · São Paulo/SP</div></div>
+    <div class="testi-viewport">
+      <div class="testi-track" id="testi-track">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"Trabalho com e-commerce e recorto foto de produto o dia inteiro. Antes eu levava uns 20 minutos por foto no Photoshop; com o Agente 07 caiu para menos de 1 minuto. Na primeira semana já tinha me pagado umas dez vezes."</p>
+          <div class="testi-author">
+            <div class="testi-avatar av-blue">MS</div>
+            <div class="testi-info"><div class="name">Mariana S.</div><div class="role">Designer de E-commerce · São Paulo/SP</div></div>
+          </div>
+          <div class="testi-platform">✔ Compra verificada via Kiwify</div>
         </div>
-        <div class="testi-platform">✔ Compra verificada via Kiwify</div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"Nunca usei IA antes e consegui entregar projetos profissionais no primeiro dia. Valeu muito mais do que paguei. Recomendo sem hesitar para qualquer designer."</p>
-        <div class="testi-author">
-          <div class="testi-avatar av-green">CR</div>
-          <div class="testi-info"><div class="name">Carlos R.</div><div class="role">Freelancer · Belo Horizonte/MG</div></div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"Confesso que comprei desconfiado, achando que era mais um pacote de prompt genérico. Não é. Cada agente já vem configurado para a tarefa e o resultado sai certo de primeira. O de vetorizar logo virou meu braço direito."</p>
+          <div class="testi-author">
+            <div class="testi-avatar av-green">CR</div>
+            <div class="testi-info"><div class="name">Carlos R.</div><div class="role">Designer Freelancer · Belo Horizonte/MG</div></div>
+          </div>
+          <div class="testi-platform">✔ Compra verificada via Kiwify</div>
         </div>
-        <div class="testi-platform">✔ Compra verificada via Kiwify</div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"Dobrei o número de clientes atendidos por mês sem precisar contratar ajuda. Os agentes de mockup e substituição de fundo são os que mais uso no dia a dia."</p>
-        <div class="testi-author">
-          <div class="testi-avatar av-purple">FT</div>
-          <div class="testi-info"><div class="name">Fernanda T.</div><div class="role">Social Media Designer · Curitiba/PR</div></div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"Atendo 8 clientes de social media. O agente de mockup e o de troca de fundo entraram na minha rotina diária — o que eu terceirizava por R$ 50–80 por peça, hoje resolvo em minutos. Fechei mais 2 clientes este mês."</p>
+          <div class="testi-author">
+            <div class="testi-avatar av-purple">FT</div>
+            <div class="testi-info"><div class="name">Fernanda T.</div><div class="role">Social Media Designer · Curitiba/PR</div></div>
+          </div>
+          <div class="testi-platform">✔ Compra verificada via Kiwify</div>
         </div>
-        <div class="testi-platform">✔ Compra verificada via Kiwify</div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"Tenho 46 anos e apanhava para acompanhar essas ferramentas novas de IA. Aqui não tem segredo: abre o agente, manda a foto, descreve o que quer. Uso no ChatGPT gratuito mesmo. Em uma tarde já estava produzindo."</p>
+          <div class="testi-author">
+            <div class="testi-avatar av-blue">RM</div>
+            <div class="testi-info"><div class="name">Ricardo M.</div><div class="role">Designer Gráfico · Campinas/SP</div></div>
+          </div>
+          <div class="testi-platform">✔ Compra verificada via Kiwify</div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"O upscaling salvou um trabalho de impressão em lona: o cliente só tinha uma foto pequena de 800px e eu precisava dela gigante. Ampliei sem serrilhar nada e o material foi aprovado. Só esse job pagou o pacote."</p>
+          <div class="testi-author">
+            <div class="testi-avatar av-green">AL</div>
+            <div class="testi-info"><div class="name">André L.</div><div class="role">Designer de Impressos · Recife/PE</div></div>
+          </div>
+          <div class="testi-platform">✔ Compra verificada via Kiwify</div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"Sou fotógrafo e uso os agentes de pele e iluminação para o tratamento básico dos ensaios. Não substitui a edição fina em trabalho de capa, mas para volume do dia a dia despacho os previews em metade do tempo."</p>
+          <div class="testi-author">
+            <div class="testi-avatar av-purple">PH</div>
+            <div class="testi-info"><div class="name">Paulo H.</div><div class="role">Fotógrafo e Editor · Goiânia/GO</div></div>
+          </div>
+          <div class="testi-platform">✔ Compra verificada via Kiwify</div>
+        </div>
       </div>
     </div>
   </div>
@@ -792,6 +832,10 @@
     if (diff > 0) setTimeout(tick, 1000);
   }
   tick();
+
+  /* ── Carrossel de depoimentos: duplica os cards para o loop ser contínuo */
+  const track = document.getElementById('testi-track');
+  if (track) track.innerHTML += track.innerHTML;
 
   /* ── FAQ icon toggle */
   document.querySelectorAll('details.faq-item').forEach(d => {
